@@ -3,6 +3,7 @@ using System;
 using Desafio_API_Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Desafio_API_Backend.Migrations
 {
     [DbContext(typeof(ContextoBancoDeDados))]
-    partial class ContextoBancoDeDadosModelSnapshot : ModelSnapshot
+    [Migration("20240913174314_Criar")]
+    partial class Criar
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

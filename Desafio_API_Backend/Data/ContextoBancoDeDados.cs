@@ -19,20 +19,27 @@ namespace Desafio_API_Backend.Data
         // forma de criação da tabela Motos
         public DbSet<ModeloMoto> Motos { get; set; }
         // forma de criação da tabela locacoes
-        public DbSet<ModeloLocacao> locacaos { get; set; }
+        public DbSet<ModeloLocaçao> locacaos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            // Define uma chave primária composta para ModeloLocaçao
+            modelBuilder.Entity<ModeloLocaçao>()
+                .HasKey(l => new { l.Id, l.IdMoto });
+
             // Configura o relacionamento entre Locacao e Moto
-            modelBuilder.Entity<ModeloLocacao>()
+            modelBuilder.Entity<ModeloLocaçao>()
                 .HasOne(l => l.MotoRelacionada)
                 .WithMany(m => m.Alocacoes)
                 .HasForeignKey(l => l.IdMoto);
 
-            // Configura a coluna 'Placa' como única
+            // Configura a coluna 'Placa' como única para ModeloMoto
             modelBuilder.Entity<ModeloMoto>()
                 .HasIndex(m => m.Placa)
                 .IsUnique();
+
+
 
 
         }

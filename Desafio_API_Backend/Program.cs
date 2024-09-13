@@ -1,4 +1,5 @@
 using Desafio_API_Backend.Data;
+using Desafio_API_Backend.Serviços.Locacao;
 using Desafio_API_Backend.Serviços.Moto;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +13,7 @@ builder.Services.AddSwaggerGen();
 
 //avisa a interface que seus metódos serão implementados dentro do serviço
 builder.Services.AddScoped<MotoInterface, MotoServiços>();
-
+builder.Services.AddScoped<LocaçaoInterface, LocaçaoServiços>();
 
 // Configuração do DbContext com a string de conexão
 //pegando a string de conexão no arquivo appsettings.json e mandando para a classe ContextoBancoDeDados.cs
